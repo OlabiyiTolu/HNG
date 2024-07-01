@@ -7,9 +7,9 @@
     ],
     "routes": [
         {
+            
             "src":"/api/hello",
-            "dest":"app.py",
-            "methods": ["GET"]
+            "dest":"app.py"
         }
     ]
     
