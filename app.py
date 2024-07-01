@@ -9,7 +9,7 @@ API_KEY = '27b597283caa2674af2979ade8fe7156'
 
 @app.route('/api/hello')
 def hello():
-    name = request.args.get('your name')
+    name = request.args.get('visitor_name')
     if name is None:
         name = "Mark"
     # name = 'Tolu'
