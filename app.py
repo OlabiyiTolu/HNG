@@ -23,7 +23,7 @@ def hello():
     response = requests.get(url)
     data = response.json()
     temperature = data['main']['temp']
-    temperature = (temperature - 32) * 5.0/9.0
+    temperature = (temperature - 273.15)
 
     response = {
         # 'name': name,
