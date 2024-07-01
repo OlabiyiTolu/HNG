@@ -23,13 +23,13 @@ def hello():
     response = requests.get(url)
     data = response.json()
     temperature = data['main']['temp']
-    temperature = [(temperature-32)*5]/9
+    temperature = (temperature - 32) * 5.0/9.0
 
     response = {
         # 'name': name,
         'client ip': ip,
         'location': location,
-        'greetings' : f"Hello, {name}!, the temperature is {temperature} degrees Celcius in {location}" 
+        'greetings' : f"Hello, {name}!, the temperature is {temperature:.2f} degrees Celcius in {location}" 
     }
     return jsonify(response)
 
