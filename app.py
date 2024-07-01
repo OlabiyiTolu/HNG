@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 API_KEY = '27b597283caa2674af2979ade8fe7156'
 
-@app.route('/api/hello')
+@app.route('/')
 def hello():
-    name = request.args.get('visitor_name')
+    name = request.args.get('your name')
     if name is None:
-        name = "Mark"
+        name = "Guest"
     # name = 'Tolu'
     ip = request.remote_addr
 
