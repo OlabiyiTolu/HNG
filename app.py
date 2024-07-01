@@ -29,7 +29,7 @@ def hello():
         # 'name': name,
         'client ip': ip,
         'location': location,
-        'greetings' : f"Hello, {name}!, the temperature is {temperature:.2f} degrees Celcius in {location}" 
+        'greetings' : f"Hello, {name}!, the temperature is {int(temperature)} degrees Celcius in {location}" 
     }
     return jsonify(response)
 
