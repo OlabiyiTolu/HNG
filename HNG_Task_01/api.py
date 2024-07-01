@@ -8,7 +8,8 @@ API_KEY = '27b597283caa2674af2979ade8fe7156'
 
 @app.route('/app/hello')
 def hello():
-    name = request.args.get('visitor name')
+    name = request.args.get('your name')
+    # name = 'Tolu'
     ip = request.remote_addr
 
     geolocation = geocoder.ip(ip)
