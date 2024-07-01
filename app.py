@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 API_KEY = '27b597283caa2674af2979ade8fe7156'
 
-@app.route('/app/hello')
+@app.route('/')
 def hello():
     name = request.args.get('your name')
     # name = 'Tolu'
