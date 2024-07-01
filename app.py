@@ -10,6 +10,8 @@ API_KEY = '27b597283caa2674af2979ade8fe7156'
 @app.route('/')
 def hello():
     name = request.args.get('your name')
+    if name is None:
+        name = "Guest"
     # name = 'Tolu'
     ip = request.remote_addr
 
