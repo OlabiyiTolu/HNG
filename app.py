@@ -17,8 +17,8 @@ def hello():
 
 
     # Get client IP address from headers (handle proxy)
-    # ip = request.headers.get('X-Forwarded-For', request.remote_addr)  
-    ip = '185.107.56.145'
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr)  
+    # ip = '185.107.56.145'
 
     # Use WeatherAPI.com's IP Lookup API to get location
     base_url = "http://api.weatherapi.com/v1/ip.json"
