@@ -5,7 +5,7 @@ import geocoder
 
 app = Flask(__name__)
 
-API_KEY = '27b597283caa2674af2979ade8fe7156'  # Replace with your actual API key
+API_KEY = '27b597283caa2674af2979ade8fe7156'  
 
 @app.route('/api/hello')
 def hello():
@@ -13,10 +13,10 @@ def hello():
     # if name is None:
     #     name = "Guest"
     # name = Tolu
-
-    # Get client IP from headers
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr)  # Check for X-Forwarded-For header
-
+    
+    # Get client IP address from headers (handle proxy)
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr)  
+    
     geolocation = geocoder.ip(ip)
     location = geolocation.city
 
@@ -26,13 +26,14 @@ def hello():
     data = response.json()
     temperature = data['main']['temp']
     temperature = (temperature - 273.15)
-    
-    response = {
-        'client ip': ip,
-        'location': location,
-        'greetings' : f"Hello, {name}!, the temperature is {int(temperature)} degrees Celcius in {location}" 
+
+    response_data = {
+        "client ip": ip,
+        "greetings": f"Hello, {name}!, the temperature is {int(temperature)} degrees Celcius in {location}",
+        "location": location
     }
-    return jsonify(response)
+
+    return jsonify(response_data)  # Return correct JSON structure
 
 if __name__ == "__main__":
-    app.run(debug = True) 
+    app.run(debug=True)
