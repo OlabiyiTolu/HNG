@@ -4,7 +4,8 @@ from collections import OrderedDict
 
 
 app = Flask(__name__)
-app.config['JSON_SORT_KEYS'] = False
+# app.config['JSON_SORT_KEYS'] = False
+app.json.sort_keys=False
 
 # Replace with your actual WeatherAPI.com API key
 API_KEY = 'd95126981fce444098a124134240207'
