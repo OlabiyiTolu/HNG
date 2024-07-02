@@ -50,7 +50,10 @@ def hello():
         # 'data': weather_data
     }
     
-    response_json = json.dumps(response_data, indent=4, sort_keys=False)
+    # Construct JSON response manually to maintain order
+    response_json = json.dumps(response_data, sort_keys=False)
+    response_json = f'{{"client_ip": "{ip}", "location": "{location}", "greeting": "{response_data["greeting"]}"}}'
+    
     return Response(response=response_json, status=200, mimetype='application/json')
 
     # return jsonify(response_data)  
