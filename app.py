@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 import requests
-
+from collections import OrderedDict
 
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
 # Replace with your actual WeatherAPI.com API key
 API_KEY = 'd95126981fce444098a124134240207'
@@ -16,8 +17,8 @@ def hello():
 
 
     # Get client IP address from headers (handle proxy)
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr)  
-    # ip = '102.89.45.44'
+    # ip = request.headers.get('X-Forwarded-For', request.remote_addr)  
+    ip = '185.107.56.145'
 
     # Use WeatherAPI.com's IP Lookup API to get location
     base_url = "http://api.weatherapi.com/v1/ip.json"
@@ -43,11 +44,12 @@ def hello():
     temperature = weather_data['current']['temp_c']
 
     response_data = {
-        "client ip": ip,
-        "greetings": f"Hello, {name}!, the temperature is {int(temperature)} degrees Celcius in {location}",
+        "client_ip": ip,
         "location": location,
+        "greeting": f"Hello, {name}!, the temperature is {int(temperature)} degrees Celcius in {location}",
         # 'data': weather_data
     }
+    
     return jsonify(response_data)  
 
 if __name__ == "__main__":
