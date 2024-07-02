@@ -1,11 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import requests
-from collections import OrderedDict
-
+import json
 
 app = Flask(__name__)
 # app.config['JSON_SORT_KEYS'] = False
-app.json.sort_keys=False
+# app.json.sort_keys=False
 
 # Replace with your actual WeatherAPI.com API key
 API_KEY = 'd95126981fce444098a124134240207'
@@ -51,7 +50,10 @@ def hello():
         # 'data': weather_data
     }
     
-    return jsonify(response_data)  
+    response_json = json.dumps(response_data, indent=4, sort_keys=False)
+    return Response(response=response_json, status=200, mimetype='application/json')
+
+    # return jsonify(response_data)  
 
 if __name__ == "__main__":
     app.run(debug=True)
